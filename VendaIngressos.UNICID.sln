@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{5AF71716-65F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identidade", "Identidade", "{19124C58-D90A-4BA4-A739-551EE41B6102}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Identidade.API", "src\services\VendaIngressos.Identidade\VendaIngressos.Identidade.API.csproj", "{04CC0BA5-3F96-4F83-986A-4C54D600220F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Identidade.API", "src\services\VendaIngressos.Identidade\VendaIngressos.Identidade.API.csproj", "{04CC0BA5-3F96-4F83-986A-4C54D600220F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mvc", "mvc", "{1ABBCFB7-DD7B-4A41-8141-035F84CF082C}"
 EndProject
@@ -23,13 +23,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Produto", "Produto", "{30D4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pagamento", "Pagamento", "{71406C5D-B193-42DC-B7A8-E04916251E0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.WebApp.MVC", "VendaIngressos.WebApp.MVC\VendaIngressos.WebApp.MVC.csproj", "{F3FEADA7-BC01-45A7-B30A-F45717B5A9CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.WebApp.MVC", "src\web\VendaIngressos.WebApp.MVC\VendaIngressos.WebApp.MVC.csproj", "{F3FEADA7-BC01-45A7-B30A-F45717B5A9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Carrinho.API", "VendaIngressos.Carrinho.API\VendaIngressos.Carrinho.API.csproj", "{56B8B781-0358-41B8-B036-41961981A8B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Carrinho.API", "src\services\VendaIngressos.Carrinho.API\VendaIngressos.Carrinho.API.csproj", "{56B8B781-0358-41B8-B036-41961981A8B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Pagamento.API", "src\services\VendaIngressos.Pagamento.API\VendaIngressos.Pagamento.API.csproj", "{805263A0-0EF2-485C-A382-C4F8B155A2FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Pagamento.API", "src\services\VendaIngressos.Pagamento.API\VendaIngressos.Pagamento.API.csproj", "{805263A0-0EF2-485C-A382-C4F8B155A2FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Produto.API", "VendaIngressos.Produto.API\VendaIngressos.Produto.API.csproj", "{0F636EFC-48A7-4A7E-AF65-C7519F3E1767}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Produto.API", "src\services\VendaIngressos.Produto.API\VendaIngressos.Produto.API.csproj", "{0F636EFC-48A7-4A7E-AF65-C7519F3E1767}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Email", "Email", "{33C94E46-ADEF-4DAF-9A82-08B739ED3BB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Email.API", "src\services\VendaIngressos.Email.API\VendaIngressos.Email.API.csproj", "{AA076E28-70B5-46F1-A7B9-911D98ABC9C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{0F636EFC-48A7-4A7E-AF65-C7519F3E1767}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F636EFC-48A7-4A7E-AF65-C7519F3E1767}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F636EFC-48A7-4A7E-AF65-C7519F3E1767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA076E28-70B5-46F1-A7B9-911D98ABC9C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA076E28-70B5-46F1-A7B9-911D98ABC9C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA076E28-70B5-46F1-A7B9-911D98ABC9C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA076E28-70B5-46F1-A7B9-911D98ABC9C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +83,8 @@ Global
 		{56B8B781-0358-41B8-B036-41961981A8B6} = {0F2164A2-8D18-43C8-8D8E-E4B6AEC444A4}
 		{805263A0-0EF2-485C-A382-C4F8B155A2FA} = {71406C5D-B193-42DC-B7A8-E04916251E0E}
 		{0F636EFC-48A7-4A7E-AF65-C7519F3E1767} = {30D424C4-987F-4386-8B3A-506710CD2ABD}
+		{33C94E46-ADEF-4DAF-9A82-08B739ED3BB3} = {FEF30506-06AB-414C-BFA8-DF52AC314146}
+		{AA076E28-70B5-46F1-A7B9-911D98ABC9C9} = {33C94E46-ADEF-4DAF-9A82-08B739ED3BB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C79DE75-6F4C-446B-8060-DC11C9AF57CB}
