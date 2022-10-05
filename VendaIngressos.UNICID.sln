@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Carrinho.API
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Pagamento.API", "src\services\VendaIngressos.Pagamento.API\VendaIngressos.Pagamento.API.csproj", "{805263A0-0EF2-485C-A382-C4F8B155A2FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Produto.API", "src\services\Produto\VendaIngressos.Produto.API\VendaIngressos.Produto.API.csproj", "{0F636EFC-48A7-4A7E-AF65-C7519F3E1767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Produto.API", "src\services\Produto\VendaIngressos.Produto.API\VendaIngressos.Produto.API.csproj", "{0F636EFC-48A7-4A7E-AF65-C7519F3E1767}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Email", "Email", "{33C94E46-ADEF-4DAF-9A82-08B739ED3BB3}"
 EndProject
@@ -37,9 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Email.API", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Produto.Domain", "src\services\Produto\VendaIngressos.Produto.Domain\VendaIngressos.Produto.Domain.csproj", "{A82F84FD-AD7F-471B-8D2F-784780ADD479}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Produto.Data", "src\services\Produto\VendaIngressos.Produto.Data\VendaIngressos.Produto.Data.csproj", "{43C4903E-15BE-435B-900A-11D37431BCE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Produto.Data", "src\services\Produto\VendaIngressos.Produto.Data\VendaIngressos.Produto.Data.csproj", "{43C4903E-15BE-435B-900A-11D37431BCE2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaIngressos.Produto.Services", "src\services\Produto\VendaIngressos.Produto.Services\VendaIngressos.Produto.Services.csproj", "{16ED98FA-0438-4BC1-B7BE-B98CDE8A749C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendaIngressos.Produto.CrossCutting", "src\services\Produto\VendaIngressos.Produto.CrossCutting\VendaIngressos.Produto.CrossCutting.csproj", "{37FED8C2-E881-4CB1-9C15-FDF54DC2E0C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{16ED98FA-0438-4BC1-B7BE-B98CDE8A749C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16ED98FA-0438-4BC1-B7BE-B98CDE8A749C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16ED98FA-0438-4BC1-B7BE-B98CDE8A749C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37FED8C2-E881-4CB1-9C15-FDF54DC2E0C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37FED8C2-E881-4CB1-9C15-FDF54DC2E0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37FED8C2-E881-4CB1-9C15-FDF54DC2E0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37FED8C2-E881-4CB1-9C15-FDF54DC2E0C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +112,7 @@ Global
 		{A82F84FD-AD7F-471B-8D2F-784780ADD479} = {30D424C4-987F-4386-8B3A-506710CD2ABD}
 		{43C4903E-15BE-435B-900A-11D37431BCE2} = {30D424C4-987F-4386-8B3A-506710CD2ABD}
 		{16ED98FA-0438-4BC1-B7BE-B98CDE8A749C} = {30D424C4-987F-4386-8B3A-506710CD2ABD}
+		{37FED8C2-E881-4CB1-9C15-FDF54DC2E0C8} = {30D424C4-987F-4386-8B3A-506710CD2ABD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C79DE75-6F4C-446B-8060-DC11C9AF57CB}

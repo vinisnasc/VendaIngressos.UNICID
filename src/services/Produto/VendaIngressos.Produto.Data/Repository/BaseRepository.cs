@@ -4,13 +4,13 @@ using VendaIngressos.Produto.Domain.Interfaces.Repository;
 
 namespace VendaIngressos.Produto.Data.Repository
 {
-    internal class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
+    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly ProdutoContexto _context;
 
         public BaseRepository(ProdutoContexto context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public virtual async Task Incluir(T entity)
@@ -22,7 +22,7 @@ namespace VendaIngressos.Produto.Data.Repository
 
         public virtual async Task Alterar(T entity)
         {
-            _context.Set<T>().Update(entity);
+            //_context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
         }
 

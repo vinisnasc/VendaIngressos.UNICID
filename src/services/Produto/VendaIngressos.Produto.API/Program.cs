@@ -1,4 +1,10 @@
+using VendaIngressos.Produto.CrossCutting.DI;
+using VendaIngressos.Produto.CrossCutting.Mapping;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.RegisterServices(builder.Configuration);
+builder.Services.AddAutoMapperConfiguration();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

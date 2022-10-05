@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VendaIngressos.Produto.Domain\VendaIngressos.Produto.Domain.csproj" />
+    <ProjectReference Include="..\VendaIngressos.Produto.Data\VendaIngressos.Produto.Data.csproj" />
+    <ProjectReference Include="..\VendaIngressos.Produto.Services\VendaIngressos.Produto.Services.csproj" />
   </ItemGroup>
 
 </Project>
