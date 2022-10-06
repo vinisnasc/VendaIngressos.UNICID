@@ -8,6 +8,6 @@
         public string Complemento { get; set; }
         public Guid MunicipioId { get; set; }
         public Municipio Municipio { get; set; }
-        public IEnumerable<ShowHouse> MyProperty { get; set; }
+        public IEnumerable<ShowHouse> ShowHouses { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using VendaIngressos.Produto.Domain.Entities;
+﻿using System.Linq.Expressions;
+using VendaIngressos.Produto.Domain.Entities;
 
 namespace VendaIngressos.Produto.Domain.Interfaces.Repository
 {
@@ -8,5 +9,6 @@ namespace VendaIngressos.Produto.Domain.Interfaces.Repository
         Task Alterar(T entity);
         Task<T> SelecionarPorId(Guid id);
         Task<List<T>> SelecionarTudo();
+        Task<T> Buscar(Expression<Func<T, bool>> predicate);
     }
 }

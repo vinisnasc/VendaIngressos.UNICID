@@ -22,10 +22,16 @@ namespace VendaIngressos.Produto.CrossCutting.DI
 
             // Services
             services.AddScoped<IOrganizadorService, OrganizadorService>();
+            services.AddScoped<IShowHouseService, ShowHouseService>();
+            services.AddScoped<IAtracaoService, AtracaoService>();
 
             // Repositorys
             services.AddScoped<IAtracaoRepository, AtracaoRepository>();
             services.AddScoped<IOrganizadorRepository, OrganizadorRepository>();
+            services.AddScoped<IAtracaoRepository, AtracaoRepository>();
+            services.AddScoped<IShowHouseRepository, ShowHouseRepository>();
+            services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            services.AddScoped<IMunicipioRepository, MunicipioRepository>();
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
             // UnitOfWork

@@ -11,6 +11,7 @@ namespace VendaIngressos.Produto.Data
 
         public DbSet<Atracao> Atracoes { get; set; }
         public DbSet<Organizador> Organizadores { get; set; }
+        public DbSet<ShowHouse> ShowHouse { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\VendaIngressos.Produto.CrossCutting\VendaIngressos.Produto.CrossCutting.csproj" />
     <ProjectReference Include="..\VendaIngressos.Produto.Services\VendaIngressos.Produto.Services.csproj" />
   </ItemGroup>

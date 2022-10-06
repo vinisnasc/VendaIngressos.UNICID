@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using VendaIngressos.Produto.Domain.Entities;
 using VendaIngressos.Produto.Domain.Interfaces.Repository;
 
@@ -34,6 +35,11 @@ namespace VendaIngressos.Produto.Data.Repository
         public virtual async Task<List<T>> SelecionarTudo()
         {
             return await _context.Set<T>().ToListAsync();
+        }
+
+        public virtual async Task<T> Buscar(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().FirstOrDefaultAsync(predicate);
         }
 
         public async Task Dispose()

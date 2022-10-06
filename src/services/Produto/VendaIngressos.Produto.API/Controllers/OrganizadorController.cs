@@ -17,7 +17,16 @@ namespace VendaIngressos.Produto.API.Controllers
             _organizadorService = organizadorService ?? throw new ArgumentNullException(nameof(organizadorService));
         }
 
+        [HttpGet]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> BuscarTodosOrganizadores()
+        {
+            var list = await _organizadorService.BuscarTodosOrganizadores();
+            return Ok(list);
+        }
+
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> CriarNovoOrganizador(OrganizadorDTO dto)
         {
             if (!ModelState.IsValid) return BadRequest();

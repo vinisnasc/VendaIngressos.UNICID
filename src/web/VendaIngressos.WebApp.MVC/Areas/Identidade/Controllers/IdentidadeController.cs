@@ -56,8 +56,8 @@ namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Controllers
 
             //if (false) return View(usuarioLogin);
             await RealizarLogin(response);
-            return RedirectToPage("\\Home\\Index");
-            return RedirectToAction("Home", "Index", new {area = ""});
+            //return RedirectToPage("Produto\\Produto\\Index");
+           return RedirectToAction("Index", "Produto");
         }
 
         [HttpGet]
