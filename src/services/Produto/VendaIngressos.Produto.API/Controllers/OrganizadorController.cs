@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using VendaIngressos.Produto.Domain.Entities.DTOs;
 using VendaIngressos.Produto.Domain.Interfaces.Service;
-using VendaIngressos.Produto.Services;
 
 namespace VendaIngressos.Produto.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class OrganizadorController : ControllerBase
+    public class OrganizadorController : BaseController
     {
         private readonly IOrganizadorService _organizadorService;
 

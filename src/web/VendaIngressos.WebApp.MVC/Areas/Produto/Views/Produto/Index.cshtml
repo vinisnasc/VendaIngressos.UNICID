@@ -22,14 +22,14 @@ else
             {
                 <div class="col-3">
                     <img src="@Model[i+1].Poster" style="width: 70px; height:100px" />
-                    <b>@Model[i].Nome</b>
+                    <b>@Model[i+1].Nome</b>
                 </div>
             }
             @if (i + 2 < Model.Count)
             {
                 <div class="col-3">
                     <img src="@Model[i+2].Poster" style="width: 70px; height:100px" />
-                    <b>@Model[i].Nome</b>
+                    <b>@Model[i+2].Nome</b>
                 </div>
             }
             @if (i + 3 < Model.Count)

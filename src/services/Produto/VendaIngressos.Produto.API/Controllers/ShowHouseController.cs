@@ -6,8 +6,7 @@ using VendaIngressos.Produto.Domain.Interfaces.Service;
 namespace VendaIngressos.Produto.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class ShowHouseController : ControllerBase
+    public class ShowHouseController : BaseController
     {
         private readonly IShowHouseService _showHouseService;
 

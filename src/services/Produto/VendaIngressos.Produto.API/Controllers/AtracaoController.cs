@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using VendaIngressos.Produto.Domain.Entities.DTOs;
-using VendaIngressos.Produto.Domain.Entities.DTOs.Results;
 using VendaIngressos.Produto.Domain.Interfaces.Service;
 
 namespace VendaIngressos.Produto.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class AtracaoController : ControllerBase
+    public class AtracaoController : BaseController
     {
         private readonly IAtracaoService _atracaoService;
 
@@ -21,6 +18,12 @@ namespace VendaIngressos.Produto.API.Controllers
         public async Task<IActionResult> BuscarTodasAtracoes()
         {
             return Ok(await _atracaoService.BuscarTodasAtracoes());
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> BuscarPorId(Guid id)
+        {
+            return Ok(await _atracaoService.BuscarAtracaoPorId(id));
         }
 
         [HttpPost]

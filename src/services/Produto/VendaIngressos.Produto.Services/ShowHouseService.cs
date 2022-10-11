@@ -3,15 +3,16 @@ using VendaIngressos.Produto.Domain.Entities;
 using VendaIngressos.Produto.Domain.Entities.DTOs;
 using VendaIngressos.Produto.Domain.Interfaces.Repository;
 using VendaIngressos.Produto.Domain.Interfaces.Service;
+using VendaIngressos.Produto.Domain.Validations;
 
 namespace VendaIngressos.Produto.Services
 {
-    public class ShowHouseService : IShowHouseService
+    public class ShowHouseService : BaseService, IShowHouseService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public ShowHouseService(IMapper mapper, IUnitOfWork unitOfWork)
+        public ShowHouseService(IMapper mapper, IUnitOfWork unitOfWork, INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
@@ -20,36 +21,20 @@ namespace VendaIngressos.Produto.Services
         public async Task CriarCasaDeShows(ShowHouseDTO dto)
         {
             var entity = _mapper.Map<ShowHouse>(dto);
-            entity.EnderecoId = await CadastrarEndereco(dto.Endereco);
-            entity.Endereco = null;
+
+            if (!ExecutarValidacao(new ShowHouseValidation(), entity) || !ExecutarValidacao(new EnderecoValidation(), entity.Endereco))
+                return;
+
+            if (await _unitOfWork.MunicipioRepository.Buscar(x => x.UfId == dto.Endereco.Municipio.UfId &&
+                                                                x.NomeMunicipio == dto.Endereco.Municipio.NomeMunicipio) != null)
+                entity.Endereco.Municipio = null;
+
+            if (await _unitOfWork.EnderecoRepository.Buscar(x => x.Cep == dto.Endereco.Cep &&
+                                                                 x.Numero == dto.Endereco.Numero &&
+                                                                 x.Complemento == dto.Endereco.Complemento) != null)
+                entity.Endereco = null;
+
             await _unitOfWork.ShowHouseRepository.Incluir(entity);
-        }
-
-        private async Task<Guid> CadastrarMunicipio(MunicipioDTO dto)
-        {
-           var entity = await _unitOfWork.MunicipioRepository.Buscar(x => x.UfId == dto.UfId && x.NomeMunicipio == dto.NomeMunicipio);
-
-            if (entity != null)
-                return entity.Id;
-
-            entity = _mapper.Map<Municipio>(dto);
-
-            await _unitOfWork.MunicipioRepository.Incluir(entity);
-
-            return entity.Id;
-        }
-
-        private async Task<Guid> CadastrarEndereco(EnderecoDTO dto)
-        {
-            var entity = await _unitOfWork.EnderecoRepository.Buscar(x => x.Cep == dto.Cep && x.Numero == dto.Numero);
-
-            if (entity != null)
-                return entity.Id;
-
-            entity = _mapper.Map<Endereco>(dto);
-            entity.MunicipioId = await CadastrarMunicipio(dto.Municipio);
-            await _unitOfWork.EnderecoRepository.Incluir(entity);
-            return entity.Id;
         }
     }
 }

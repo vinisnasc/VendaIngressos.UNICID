@@ -5,6 +5,7 @@ using VendaIngressos.Produto.Data;
 using VendaIngressos.Produto.Data.Repository;
 using VendaIngressos.Produto.Domain.Interfaces.Repository;
 using VendaIngressos.Produto.Domain.Interfaces.Service;
+using VendaIngressos.Produto.Domain.NotificadorDeErros;
 using VendaIngressos.Produto.Services;
 
 namespace VendaIngressos.Produto.CrossCutting.DI
@@ -24,6 +25,7 @@ namespace VendaIngressos.Produto.CrossCutting.DI
             services.AddScoped<IOrganizadorService, OrganizadorService>();
             services.AddScoped<IShowHouseService, ShowHouseService>();
             services.AddScoped<IAtracaoService, AtracaoService>();
+            services.AddScoped<INotificador, Notificador>();
 
             // Repositorys
             services.AddScoped<IAtracaoRepository, AtracaoRepository>();

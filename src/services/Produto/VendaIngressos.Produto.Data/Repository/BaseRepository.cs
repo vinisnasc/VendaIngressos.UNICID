@@ -16,7 +16,6 @@ namespace VendaIngressos.Produto.Data.Repository
 
         public virtual async Task Incluir(T entity)
         {
-            entity.CreateAt = DateTime.Now;
             await _context.Set<T>().AddAsync(entity);
             await _context.SaveChangesAsync();
         }
