@@ -22,5 +22,15 @@ namespace VendaIngressos.WebApp.MVC.Areas.Produto.Services
             else
                 throw new Exception("Something went wrong when calling API");
         }
+
+        public async Task CriarOrganizador(OrganizadorResult dto)
+        {
+            var response = await _client.PostAsJsonAsync(BasePath, dto);
+            if (response.IsSuccessStatusCode)
+                return;
+
+            else
+                throw new Exception("Something went wrong when calling API");
+        }
     }
 }

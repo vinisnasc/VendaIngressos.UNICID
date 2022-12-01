@@ -9,27 +9,40 @@ namespace VendaIngressos.Produto.API.Controllers
     {
         private readonly IOrganizadorService _organizadorService;
 
-        public OrganizadorController(IOrganizadorService organizadorService)
+        public OrganizadorController(IOrganizadorService organizadorService, INotificador notificador) : base(notificador)
         {
             _organizadorService = organizadorService ?? throw new ArgumentNullException(nameof(organizadorService));
         }
 
         [HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> BuscarTodosOrganizadores()
         {
             var list = await _organizadorService.BuscarTodosOrganizadores();
-            return Ok(list);
+            return CustomResponse(list);
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> CriarNovoOrganizador(OrganizadorDTO dto)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> CriarNovoOrganizador(OrganizadorCreate dto)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             await _organizadorService.CadastrarOrganizador(dto);
-            return Ok();
+
+            return CustomResponse(dto);
         }
+        /*
+        public async Task<IActionResult> AtualizarOrganizador(Guid id, OrganizadorDTO dto)
+        {
+            /*if (id != dto.Id)
+            {
+                NotificarErro("O id informado não é o mesmo que foi passado na query");
+                return CustomResponse(dto);
+            }
+
+            return Ok();
+        }*/
     }
 }

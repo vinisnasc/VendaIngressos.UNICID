@@ -15,13 +15,18 @@ namespace VendaIngressos.Identidade.API.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly AppSettingSecrets _appSettingSecrets;
+        private readonly ILogger _logger;
 
-        public IdentidadeController(SignInManager<IdentityUser> signInManager,
-                              UserManager<IdentityUser> userManager, IOptions<AppSettingSecrets> appSettings)
+        public IdentidadeController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, 
+                                    IOptions<AppSettingSecrets> appSettings, ILogger<IdentidadeController> logger)
         {
-            _signInManager = signInManager;
-            _userManager = userManager;
+            if (appSettings is null)
+                throw new ArgumentNullException(nameof(appSettings));
+
+            _signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             _appSettingSecrets = appSettings.Value;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpPost("nova-conta")]
@@ -40,6 +45,11 @@ namespace VendaIngressos.Identidade.API.Controllers
 
             if (result.Succeeded)
             {
+                if (usuario.Email == "vini.souza00@gmail.com")
+                    await _userManager.AddClaimAsync(user, new Claim("adm", "adm"));
+
+                _logger.LogInformation($"Usuário {usuario.Email} cadastrado com sucesso!");
+
                 return CustomResponse(await GerarJwt(user.Email));
             }
 

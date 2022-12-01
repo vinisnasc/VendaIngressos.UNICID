@@ -22,7 +22,7 @@ namespace VendaIngressos.Produto.Data.Repository
 
         public virtual async Task Alterar(T entity)
         {
-            //_context.Set<T>().Update(entity);
+            _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
         }
 

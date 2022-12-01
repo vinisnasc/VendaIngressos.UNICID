@@ -5,7 +5,7 @@ namespace VendaIngressos.Produto.Domain.Interfaces.Service
 {
     public interface IOrganizadorService 
     {
-        Task CadastrarOrganizador(OrganizadorDTO dto);
+        Task CadastrarOrganizador(OrganizadorCreate dto);
         Task<IEnumerable<OrganizadorResult>> BuscarTodosOrganizadores();
     }
 }

@@ -12,7 +12,7 @@ namespace VendaIngressos.Produto.Services
 
         protected BaseService(INotificador notificador)
         {
-            _notificador = notificador;
+            _notificador = notificador ?? throw new ArgumentNullException(nameof(notificador));
         }
 
         protected void Notificar(ValidationResult validationResult)

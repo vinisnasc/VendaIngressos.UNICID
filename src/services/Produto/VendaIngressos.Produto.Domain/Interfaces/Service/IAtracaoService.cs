@@ -7,6 +7,6 @@ namespace VendaIngressos.Produto.Domain.Interfaces.Service
     {
         Task<List<AtracaoResult>> BuscarTodasAtracoes();
         Task<AtracaoResult> BuscarAtracaoPorId(Guid id);
-        Task CriarAtracao(AtracaoDTO dto);
+        Task CriarAtracao(AtracaoCreate dto);
     }
 }

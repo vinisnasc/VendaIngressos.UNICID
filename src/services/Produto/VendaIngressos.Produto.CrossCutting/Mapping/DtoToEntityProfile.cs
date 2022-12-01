@@ -9,17 +9,28 @@ namespace VendaIngressos.Produto.CrossCutting.Mapping
     {
         public DtoToEntityProfile()
         {
-            CreateMap<OrganizadorDTO, Organizador>().ReverseMap();
+            CreateMap<OrganizadorCreate, Organizador>().ReverseMap();
             CreateMap<OrganizadorResult, Organizador>().ReverseMap();
-            CreateMap<ShowHouseDTO, ShowHouse>().ReverseMap();
+
+            CreateMap<ShowHouseCreate, ShowHouse>().ReverseMap();
             CreateMap<ShowHouseResult, ShowHouse>().ReverseMap();
+            CreateMap<ShowHouseResultFull, ShowHouse>().ReverseMap();
+            CreateMap<ShowHouseUpdate, ShowHouse>().ReverseMap();
+
             CreateMap<MunicipioDTO, Municipio>().ReverseMap();
             CreateMap<MunicipioResult, Municipio>().ReverseMap();
+            CreateMap<MunicipioResultFull, Municipio>().ReverseMap();
+
             CreateMap<EnderecoDTO, Endereco>().ReverseMap();
             CreateMap<EnderecoResult, Endereco>().ReverseMap();
+            CreateMap<EnderecoResultFull, Endereco>().ReverseMap();
+
             CreateMap<UfResult, Uf>().ReverseMap();
-            CreateMap<AtracaoDTO, Atracao>().ReverseMap();
+            CreateMap<UfResultFull, Uf>().ReverseMap();
+
+            CreateMap<AtracaoCreate, Atracao>().ReverseMap();
             CreateMap<AtracaoResult, Atracao>().ReverseMap();
+            CreateMap<AtracaoResultFull, Atracao>().ReverseMap();
         }
     }
 }

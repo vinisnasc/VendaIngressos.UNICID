@@ -15,7 +15,7 @@ namespace VendaIngressos.Produto.Services
         public AtracaoService(IUnitOfWork unitOfWork, IMapper mapper, INotificador notificador) : base(notificador)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            _mapper = mapper;
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async Task<List<AtracaoResult>> BuscarTodasAtracoes()
@@ -30,7 +30,7 @@ namespace VendaIngressos.Produto.Services
             return _mapper.Map<AtracaoResult>(entity);
         }
 
-        public async Task CriarAtracao(AtracaoDTO dto)
+        public async Task CriarAtracao(AtracaoCreate dto)
         {
             var entity = _mapper.Map<Atracao>(dto);
             await _unitOfWork.AtracaoRepository.Incluir(entity);

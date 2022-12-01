@@ -16,7 +16,7 @@ namespace VendaIngressos.Produto.Services
         public OrganizadorService(IUnitOfWork unitOfWork, IMapper mapper, INotificador notificador) : base(notificador)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            _mapper = mapper;
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async Task<IEnumerable<OrganizadorResult>> BuscarTodosOrganizadores()
@@ -25,7 +25,7 @@ namespace VendaIngressos.Produto.Services
             return _mapper.Map<IEnumerable<OrganizadorResult>>(list);
         }
 
-        public async Task CadastrarOrganizador(OrganizadorDTO dto)
+        public async Task CadastrarOrganizador(OrganizadorCreate dto)
         {
             var entity = _mapper.Map<Organizador>(dto);
 

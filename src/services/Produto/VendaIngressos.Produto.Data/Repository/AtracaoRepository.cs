@@ -8,6 +8,16 @@ namespace VendaIngressos.Produto.Data.Repository
     {
         public AtracaoRepository(ProdutoContexto context) : base(context) {}
 
+        public override async Task<Atracao> SelecionarPorId(Guid id)
+        {
+            return await _context.Atracoes.Include(x => x.Organizador)
+                                          .Include(x => x.ShowHouse)
+                                          .ThenInclude(x => x.Endereco)
+                                          .ThenInclude(x => x.Municipio)
+                                          .ThenInclude(x => x.Uf)
+                                          .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public override async Task<List<Atracao>> SelecionarTudo()
         {
             return await _context.Atracoes.Include(x => x.Organizador)

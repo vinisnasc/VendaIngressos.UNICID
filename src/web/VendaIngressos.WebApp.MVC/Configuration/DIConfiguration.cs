@@ -19,6 +19,8 @@ namespace VendaIngressos.WebApp.MVC.Configuration
                                     c.BaseAddress = new Uri(configuration["ServiceUrls:ProdutoApi"]));
             services.AddHttpClient<IOrganizadorService, OrganizadorService>(c =>
                                     c.BaseAddress = new Uri(configuration["ServiceUrls:ProdutoApi"]));
+            services.AddHttpClient<IShowHouseService, ShowHouseService>(c =>
+                                    c.BaseAddress = new Uri(configuration["ServiceUrls:ProdutoApi"]));
         }
     }
 }

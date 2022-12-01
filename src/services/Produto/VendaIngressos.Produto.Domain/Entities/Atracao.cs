@@ -8,6 +8,7 @@ namespace VendaIngressos.Produto.Domain.Entities
         public DateTime Data { get; set; }
         public decimal Valor { get; set; }
         public int QuantidadeIngresso { get; set; }
+        public int QuantidadeIngressoTeste { get; set; }
         public string Poster { get; set; }
         public string Descricao { get; set; }
         public TipoEvento TipoEvento { get; set; }

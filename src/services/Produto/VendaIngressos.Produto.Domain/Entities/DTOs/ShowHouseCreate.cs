@@ -1,6 +1,6 @@
 ﻿namespace VendaIngressos.Produto.Domain.Entities.DTOs
 {
-    public class ShowHouseDTO
+    public class ShowHouseCreate
     {
         public string Nome { get; set; }
         public string Telefone { get; set; }

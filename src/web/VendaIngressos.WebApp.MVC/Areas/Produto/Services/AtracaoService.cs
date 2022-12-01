@@ -13,11 +13,31 @@ namespace VendaIngressos.WebApp.MVC.Areas.Produto.Services
             _client = client ?? throw new ArgumentNullException(nameof(client));
         }
 
-        public async Task<IEnumerable<AtracaoModel>> BuscarTodasAtracoes()
+        public async Task<AtracaoViewModel> BuscarPorId(Guid id)
+        {
+            var response = await _client.GetAsync(BasePath + "/" + id);
+            if (response.IsSuccessStatusCode)
+                return await response.ReadContentAs<AtracaoViewModel>();
+
+            else
+                throw new Exception("Something went wrong when calling API");
+        }
+
+        public async Task<IEnumerable<AtracaoViewModel>> BuscarTodasAtracoes()
         {
             var response = await _client.GetAsync(BasePath);
             if (response.IsSuccessStatusCode)
-                return await response.ReadContentAs<IEnumerable<AtracaoModel>>();
+                return await response.ReadContentAs<IEnumerable<AtracaoViewModel>>();
+
+            else
+                throw new Exception("Something went wrong when calling API");
+        }
+
+        public async Task CriarAtracao(AtracaoViewModel dto)
+        {
+            var response = await _client.PostAsJsonAsync(BasePath, dto);
+            if (response.IsSuccessStatusCode)
+                return;
 
             else
                 throw new Exception("Something went wrong when calling API");

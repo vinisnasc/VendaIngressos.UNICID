@@ -57,7 +57,7 @@ namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Controllers
             //if (false) return View(usuarioLogin);
             await RealizarLogin(response);
             //return RedirectToPage("Produto\\Produto\\Index");
-           return RedirectToAction("Index", "Produto");
+           return RedirectToAction("Index", "Produto", new { area = "Produto"} );
         }
 
         [HttpGet]
@@ -65,7 +65,7 @@ namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Produto", new {area = "Produto"});
         }
 
         private async Task RealizarLogin(UsuarioRespostaLogin resposta)
@@ -85,8 +85,7 @@ namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Controllers
             };
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
+                new ClaimsPrincipal(claimsIdentity), authProperties);
         }
 
         private static JwtSecurityToken ObterTokenFormatado(string jwtToken)

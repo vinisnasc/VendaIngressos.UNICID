@@ -1,12 +1,18 @@
-﻿namespace VendaIngressos.WebApp.MVC.Areas.Produto.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VendaIngressos.WebApp.MVC.Areas.Produto.Models
 {
-    public class AtracaoModel
+    public class AtracaoViewModel
     {
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public DateTime Data { get; set; }
         public decimal Valor { get; set; }
         public int QuantidadeIngresso { get; set; }
+
+        [Range(1, 100)]
+        public int Quantidade { get; set; } = 1;
+        public string PosterUpload { get; set; }
         public string Poster { get; set; }
         public string Descricao { get; set; }
         public TipoEvento TipoEvento { get; set; }
@@ -14,6 +20,12 @@
         public OrganizadorResult Organizador { get; set; }
         public Guid ShowHouseId { get; set; }
         public ShowHouseResult ShowHouse { get; set; }
+
+        public string NomeDiminuido()
+        {
+            if (Nome.Length < 20) return Nome;
+            return $"{Nome.Substring(0, 17)}...";
+        }
     }
 
     public enum TipoEvento
