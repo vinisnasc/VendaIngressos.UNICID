@@ -1,9 +1,26 @@
-﻿using VendaIngressos.WebApp.MVC.Extensions;
+﻿using System.Text;
+using System.Text.Json;
+using VendaIngressos.WebApp.MVC.Extensions;
 
 namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Services
 {
     public abstract class BaseService
     {
+        protected StringContent ObterConteudo(object dado)
+        {
+            return new StringContent(JsonSerializer.Serialize(dado), Encoding.UTF8, "application/json");
+        }
+
+        protected async Task<T> DeserializarObjetoResponse<T>(HttpResponseMessage message)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+
+            return JsonSerializer.Deserialize<T>(await message.Content.ReadAsStringAsync(), options);
+        }
+
         protected bool TratarErrosResponse(HttpResponseMessage response)
         {
             switch ((int)response.StatusCode)
@@ -18,6 +35,7 @@ namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Services
                     return false;
             }
 
+            // Garante que é um status code de sucesso
             response.EnsureSuccessStatusCode();
             return true;
         }

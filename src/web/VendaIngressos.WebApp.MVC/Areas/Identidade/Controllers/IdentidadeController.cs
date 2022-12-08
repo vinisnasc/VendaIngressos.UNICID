@@ -5,11 +5,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using VendaIngressos.WebApp.MVC.Areas.Identidade.Models;
 using VendaIngressos.WebApp.MVC.Areas.Identidade.Services;
+using VendaIngressos.WebApp.MVC.Controllers;
 
 namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Controllers
 {
     [Area("Identidade")]
-    public class IdentidadeController : Controller
+    public class IdentidadeController : BaseController
     {
         private readonly IAutenticacaoService _autenticacaoService;
 
@@ -33,7 +34,8 @@ namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Controllers
 
             var response = await _autenticacaoService.Registro(usuarioRegistro);
 
-            //if (false) return View(usuarioRegistro);
+            if (ResponsePossuiErros(response.ResponseResult)) return View(usuarioRegistro);
+           
             await RealizarLogin(response);
 
             return RedirectToAction("Home", "Index");
@@ -41,30 +43,37 @@ namespace VendaIngressos.WebApp.MVC.Areas.Identidade.Controllers
 
         [HttpGet]
         [Route("login")]
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login(UsuarioLogin usuarioLogin)
+        public async Task<IActionResult> Login(UsuarioLogin usuarioLogin, string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
+
             if (!ModelState.IsValid) return View(usuarioLogin);
 
             var response = await _autenticacaoService.Login(usuarioLogin);
 
-            //if (false) return View(usuarioLogin);
+            if (ResponsePossuiErros(response.ResponseResult)) return View(usuarioLogin);
+
             await RealizarLogin(response);
-            //return RedirectToPage("Produto\\Produto\\Index");
-           return RedirectToAction("Index", "Produto", new { area = "Produto"} );
+
+            if(string.IsNullOrEmpty(returnUrl)) 
+                return RedirectToAction("Index", "Produto", new { area = "Produto" });
+            
+            return LocalRedirect(returnUrl);
         }
 
         [HttpGet]
         [Route("sair")]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Produto", new {area = "Produto"});
         }
 

@@ -70,6 +70,12 @@ namespace VendaIngressos.WebApp.MVC.Areas.Produto.Models
         public string Nome { get; set; }
     }
 
+    public class OrganizadorTesteResult
+    {
+        public string Success { get; set; }
+        public OrganizadorResult Data { get; set; }
+    }
+
     public class OrganizadorResult
     {
         public Guid Id { get; set; }

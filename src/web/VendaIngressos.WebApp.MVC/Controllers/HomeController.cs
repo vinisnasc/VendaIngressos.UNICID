@@ -20,13 +20,39 @@ namespace VendaIngressos.WebApp.MVC.Controllers
 
         public IActionResult Privacy()
         {
+            ModelState.AddModelError("","erro teste");
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [Route("erro/{id:length(3,3)}")]
+        public IActionResult Error(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var modelErro = new ErrorViewModel();
+
+            if (id == 500)
+            {
+                modelErro.Mensagem = "Ocorreu um erro! Tente novamente mais tarde ou contate nosso suporte!";
+                modelErro.Titulo = "Ocorreu um erro!";
+                modelErro.ErrorCode = id;
+            }
+            else if(id == 404)
+            {
+                modelErro.Mensagem = "A pagina que esta procurando nao existe!";
+                modelErro.Titulo = "Pagina nao encontrada!";
+                modelErro.ErrorCode = id;
+            }
+            else if (id == 403)
+            {
+                modelErro.Mensagem = "Voce nao tem permissao para fazer isso!";
+                modelErro.Titulo = "Acesso negado!";
+                modelErro.ErrorCode = id;
+            }
+            else
+            {
+                return StatusCode(404);
+            }
+
+            return View("Error", modelErro);
         }
     }
 }

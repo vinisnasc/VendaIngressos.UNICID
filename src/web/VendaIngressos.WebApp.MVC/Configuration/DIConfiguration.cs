@@ -13,8 +13,9 @@ namespace VendaIngressos.WebApp.MVC.Configuration
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUser, AspNetUser>();
 
-            services.AddHttpClient<IAutenticacaoService, AutenticacaoService>(c =>
-                                    c.BaseAddress = new Uri(configuration["ServiceUrls:AutenticacaoApi"]));
+            
+            /*services.AddHttpClient<IAutenticacaoService, AutenticacaoService>(c =>
+                                    c.BaseAddress = new Uri(configuration["ServiceUrls:AutenticacaoApi"]));*/
             services.AddHttpClient<IAtracaoService, AtracaoService>(c =>
                                     c.BaseAddress = new Uri(configuration["ServiceUrls:ProdutoApi"]));
             services.AddHttpClient<IOrganizadorService, OrganizadorService>(c =>

@@ -17,7 +17,14 @@ namespace VendaIngressos.WebApp.MVC.Areas.Produto.Services
         {
             var response = await _client.GetAsync(BasePath);
             if (response.IsSuccessStatusCode)
-                return await response.ReadContentAs<IEnumerable<ShowHouseResult>>();
+            {
+                try
+                {
+                    var teste = await response.ReadContentAs<IEnumerable<ShowHouseResult>>();
+                    return teste;
+                }
+                catch (Exception ex) { return null; }
+            }
 
             else
                 throw new Exception("Something went wrong when calling API");

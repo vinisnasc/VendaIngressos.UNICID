@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+@if (Model == null)
+{
+    <h1>Lista Vazia!!!!</h1>
+}
+else
+{
 <table class="table">
     <thead>
         <tr>
@@ -45,3 +51,4 @@
 }
     </tbody>
 </table>
+}

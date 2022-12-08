@@ -16,8 +16,8 @@ namespace VendaIngressos.WebApp.MVC.Areas.Produto.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var lista = await _atracaoService.BuscarTodasAtracoes();
-            return View(lista);
+           /* var lista = await _atracaoService.BuscarTodasAtracoes();*/
+            return View(/*lista*/);
         }
 
         public async Task<IActionResult> Lista()

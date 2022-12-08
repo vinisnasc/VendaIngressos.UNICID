@@ -12,8 +12,8 @@ using VendaIngressos.Identidade.API.Data;
 namespace VendaIngressos.Identidade.API.Migrations
 {
     [DbContext(typeof(IdentidadeContexto))]
-    [Migration("20220929192012_identidade-primeira-migracao")]
-    partial class identidadeprimeiramigracao
+    [Migration("20221206022326_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

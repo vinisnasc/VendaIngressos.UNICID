@@ -4,7 +4,7 @@ namespace VendaIngressos.WebApp.MVC.Areas.Produto.Services
 {
     public interface IOrganizadorService
     {
-        Task<IEnumerable<OrganizadorResult>> BuscarTodosOrganizadores();
+        Task<IEnumerable<OrganizadorTesteResult>> BuscarTodosOrganizadores();
         Task CriarOrganizador(OrganizadorResult dto);
     }
 }
